@@ -28,7 +28,13 @@ class Hex:
   def state(self):
     return self._state
 
+  def set_state(self, state: State):
+    self._state = state
+
+  def set_hex(self, index: int, color: Color):
+    self._board.fill_hex(index, color)
+
   def run(self, settings: Settings = get_settings()) -> None:
     while self.state() == State.RUNNING:
-      self._board.fill(self.color)
+      # self._board.fill(self.color)
       time.sleep(settings.sleep_ms / 1000)

@@ -17,7 +17,7 @@ class Settings(BaseSettings):
   allowed_hosts: List[str] = []
   environment: str = "dev"
   led_count: int = 336
-  default_brightness: float = 0.5
+  default_brightness: float = 0.3
   rainbow_sleep_ms: int = 200
   sleep_ms: int = 2000
 
