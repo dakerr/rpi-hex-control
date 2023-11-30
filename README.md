@@ -18,18 +18,8 @@ I built a decorative wall planter and added some individually addressable LEDs. 
 
 ![Shapr Hex Planter](image.jpeg)
 
-
-
-## How?
-stream using a React hook and updates the table in real-time!
-
-
 ## Prerequisites
 This project needs `Docker` and `docker-compose` installed on your system.
-
-## Setup
-
-## Build
 
 ## License
 [MIT License](https://opensource.org/licenses/MIT)
