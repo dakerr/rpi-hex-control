@@ -6,7 +6,7 @@ RUN apt-get update \
 
 COPY ./pyproject.toml /rpi-hex-control/
 WORKDIR /rpi-hex-control/
-RUN poetry add numpy==1.24.4
+# RUN poetry add numpy==1.24.4
 # RUN poetry install --only main
 
 #COPY ./app /rpi-hex-control/app/
