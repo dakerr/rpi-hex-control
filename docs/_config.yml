@@ -1,0 +1,17 @@
+title: Hexagon LED Project
+description: A simple Raspberry Pi controlled, LED planter
+
+theme: jekyll-theme-material-docs
+
+main_nav:
+  - title: Get Started
+    url: /getting-started
+  
+content_table:
+  - title: Setup Environment
+    url: /getting-started
+  - title: API
+    links:
+      - title: Write HEX
+      - title: Read HEX
+      
