@@ -3,6 +3,7 @@ description: A simple Raspberry Pi controlled, LED planter
 
 repository: dakerr/rpi-hex-control
 destination: ./docs/_site
+baseurl: /docs
 
 theme: jekyll-theme-material-docs
 
