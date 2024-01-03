@@ -2,7 +2,7 @@ title: Hexagon LED Project
 description: A simple Raspberry Pi controlled, LED planter
 
 repository: dakerr/rpi-hex-control
-destination: ./docs/_site
+# destination: ./docs/_site
 baseurl: /rpi-hex-control
 
 theme: jekyll-theme-material-docs
