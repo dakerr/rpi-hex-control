@@ -5,7 +5,7 @@ from app.services.hex_lights.color import Color
 from app.core.settings import get_settings
 class Board:
   rainbow_step_num = 0
-  hexagons = 7
+  hexagon_indices = [0,1,2,3,4,5,6]
 
   @classmethod
   def fill(cls, color: Color) -> None:
@@ -20,11 +20,12 @@ class Board:
 
   @classmethod
   def rainbow_hex_step(cls)-> None:
-    for i in range(cls.hexagons):
-      pixel_index = (i * 256 // cls.hexagons) + cls.rainbow_step_num
+    for hex_index in cls.hexagon_indices:
+      pixel_index = (hex_index * 256 // len(cls.hexagon_indices)) + cls.rainbow_step_num
       hex_color = cls._wheel(pixel_index & 255)
-      cls.fill_hex(i, hex_color)
-      logger.debug(f"Fill hex: {i} color:{hex_color}")
+      cls.fill_hex(hex_index, hex_color)
+      logger.debug(f"Fill hex: {hex_index} color:{hex_color}")
+    cls.hexagon_indices = np.roll(cls.hexagon_indices, 1)
     cls.rainbow_step_num += 1
     if cls.rainbow_step_num == 255:
       cls.rainbow_step_num = 0

@@ -15,7 +15,7 @@ class Board:
     # auto_write = False
   )
   rainbow_step_num = 0
-  hexagons = 7
+  hexagon_indices = [0,1,2,3,4,5,6]
 
   @classmethod
   def fill_hex(cls, index: int, color: Color) -> None:
@@ -32,10 +32,11 @@ class Board:
 
   @classmethod
   def rainbow_hex_step(cls) -> None:
-    for i in range(cls.hexagons):
-      pixel_index = (i * 256 // cls.hexagons) + cls.rainbow_step_num
+    for i in cls.hexagon_indices:
+      pixel_index = (i * 256 // len(cls.hexagon_indices)) + cls.rainbow_step_num
       pixel_color = cls._wheel(pixel_index & 255)
       cls.fill_hex(i, pixel_color)
+    cls.hexagon_indices = np.roll(cls.hexagon_indices, 1)
     cls.rainbow_step_num += 1
     if cls.rainbow_step_num == 255:
       cls.rainbow_step_num = 0
