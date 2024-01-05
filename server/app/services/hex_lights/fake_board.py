@@ -17,7 +17,6 @@ class Board:
     for ndx, led in enumerate(hex_leds):
       logger.debug(f"Fill hex {ndx + (48 * index)} {led}")
 
-
   @classmethod
   def rainbow_step_num(cls)-> None:
     cls.rainbow_step_num += 1

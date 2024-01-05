@@ -34,6 +34,9 @@ class Hex:
   def set_hex(self, index: int, color: Color):
     self._board.fill_hex(index, color)
 
+  def set_fill(self, color: Color):
+    self._board.fill(color)
+
   def run(self, settings: Settings = get_settings()) -> None:
     while self.state() == State.RUNNING:
       # self._board.fill(self.color)

@@ -35,3 +35,10 @@ def stop(hex: Hex = Depends(get_hex)) -> Color:
 )
 def set_hex_color(hex_id: int, color: Color = Body(...), hex: Hex = Depends(get_hex)) -> None:
   hex.set_hex(hex_id, color)
+
+@router.post(
+  "/fill",
+  summary="Set a color to all hexagons",
+)
+def set_color(color: Color = Body(...), hex: Hex = Depends(get_hex)) -> None:
+  hex.set_fill(color)
