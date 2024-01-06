@@ -49,8 +49,8 @@ class Hex:
     self._board.fill(color)
 
   def run(self, settings: Settings = get_settings()) -> None:
-    while self.state == StateEnum.running:
-      if self.mode == ModeEnum.rainbow:
+    while self.state.state == StateEnum.running:
+      if self.mode.mode == ModeEnum.rainbow:
         self._board.rainbow_hex_step()
         time.sleep(settings.rainbow_sleep_ms / 1000)
       # self._board.fill(self.color)

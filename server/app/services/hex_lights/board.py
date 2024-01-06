@@ -24,19 +24,21 @@ class Board:
     for ndx, led in enumerate(hex_leds):
       cls.pixels[ndx + (48 * index)] = [color.r, color.g, color.b, color.w]
       # logger.debug(f"Fill hex {ndx + (48 * index)} {led}")
+    cls.pixels.show()
+
 
   @classmethod
   def fill(cls, color: Color) -> None:
     cls.pixels.brightness = color.brightness
     cls.pixels.fill((color.r, color.g, color.b, color.w))
+    cls.pixels.show()
 
   @classmethod
   def rainbow_hex_step(cls) -> None:
     for i in cls.hexagon_indices:
       hex_index = (i * 256 // len(cls.hexagon_indices)) + cls.rainbow_step_num
       hex_color = cls._wheel(hex_index & 255)
-      cls.fill_hex(i, pixel_hex)
-    cls.pixels.show()
+      cls.fill_hex(i, hex_color)
     cls.hexagon_indices = np.roll(cls.hexagon_indices, 1)
     cls.rainbow_step_num += 1
     if cls.rainbow_step_num == 255:
