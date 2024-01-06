@@ -11,8 +11,8 @@ class Board:
     board.D18, 
     get_settings().led_count, 
     brightness=get_settings().default_brightness, 
-    pixel_order=neopixel.GRBW
-    # auto_write = False
+    pixel_order=neopixel.GRBW,
+    auto_write = False
   )
   rainbow_step_num = 0
   hexagon_indices = [0,1,2,3,4,5,6]
@@ -33,9 +33,10 @@ class Board:
   @classmethod
   def rainbow_hex_step(cls) -> None:
     for i in cls.hexagon_indices:
-      pixel_index = (i * 256 // len(cls.hexagon_indices)) + cls.rainbow_step_num
-      pixel_color = cls._wheel(pixel_index & 255)
-      cls.fill_hex(i, pixel_color)
+      hex_index = (i * 256 // len(cls.hexagon_indices)) + cls.rainbow_step_num
+      hex_color = cls._wheel(hex_index & 255)
+      cls.fill_hex(i, pixel_hex)
+    cls.pixels.show()
     cls.hexagon_indices = np.roll(cls.hexagon_indices, 1)
     cls.rainbow_step_num += 1
     if cls.rainbow_step_num == 255:
