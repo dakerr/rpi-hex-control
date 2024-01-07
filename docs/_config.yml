@@ -12,10 +12,14 @@ main_nav:
     url: /getting-started
   
 content_table:
-  - title: Setup Environment
-    url: /getting-started
-  - title: API
+  - title: DEV Environment
+  - title: Dependency Management
+  - title: Project Organization
+  - title: API and Web Server
     links:
-      - title: Write HEX
-      - title: Read HEX
-      
+      - title: get Mode
+      - title: set Mode
+      - title: set Color
+      - title: set Hex Color
+  - title: Hardware
+  - title: Construction
