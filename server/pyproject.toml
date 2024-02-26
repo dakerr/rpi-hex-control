@@ -7,7 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.9"
-fastapi = "0.78"
+fastapi = "0.108"
 uvicorn = "0.17.6"
 loguru = "0.6"
 adafruit-circuitpython-neopixel = "^6.3.10"
@@ -16,6 +16,8 @@ adafruit-blinka = "^8.25.0"
 python-dotenv = "^1.0.0"
 rpi-gpio = "^0.7.1"
 numpy = "1.24.4"
+motor = "^3.3.2"
+pydantic = "^2.5.3"
 
 
 [build-system]

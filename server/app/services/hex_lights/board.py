@@ -5,6 +5,8 @@ import numpy as np
 from app.core.settings import get_settings
 from app.services.hex_lights.color import Color
 from loguru import logger
+from app.api.routes.api import find_items_by_tags
+
 
 class Board:
   pixels = neopixel.NeoPixel(
@@ -25,7 +27,6 @@ class Board:
       cls.pixels[ndx + (48 * index)] = [color.r, color.g, color.b, color.w]
       # logger.debug(f"Fill hex {ndx + (48 * index)} {led}")
     cls.pixels.show()
-
 
   @classmethod
   def fill(cls, color: Color) -> None:

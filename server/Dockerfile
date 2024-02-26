@@ -12,5 +12,6 @@ WORKDIR /rpi-hex-control/
 #COPY ./app /rpi-hex-control/app/
 #COPY ./dotenv /rpi-hex-control/dotenv/
 RUN poetry install --only main 
+RUN poetry add pydantic-settings
 ENTRYPOINT poetry run python -m app.main
 

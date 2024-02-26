@@ -3,6 +3,8 @@ services:
   server:
     image: rpi-server
     build: ./server
+    environment:
+      - MONGODB_URL=${MONGODB_URL}
     volumes:
       - type: bind
         source: ./server

@@ -3,8 +3,14 @@ from loguru import logger
 
 from app.services.hex_lights.color import Color
 from app.core.settings import get_settings
+from app.api.routes.api import find_items_by_tags
+from app.api.models.polyhex import PolyhexCollection
+
+
 class Board:
   rainbow_step_num = 0
+  cycle_step_num = 0
+  cycle_interpolation_step_num = 0
   hexagon_indices = [0,1,2,3,4,5,6]
 
   @classmethod
@@ -19,7 +25,7 @@ class Board:
       logger.debug(f"Fill hex {ndx + (48 * index)} {led}")
 
   @classmethod
-  def rainbow_hex_step(cls)-> None:
+  def rainbow_hex_step(cls) -> None:
     for hex_index in cls.hexagon_indices:
       pixel_index = (hex_index * 256 // len(cls.hexagon_indices)) + cls.rainbow_step_num
       hex_color = cls._wheel(pixel_index & 255)
@@ -29,6 +35,39 @@ class Board:
     cls.rainbow_step_num += 1
     if cls.rainbow_step_num == 255:
       cls.rainbow_step_num = 0
+
+  @classmethod
+  def cycle_hex_step(cls) -> None:
+    #todo: set/get the tags
+    tags: list = ["blue","green"]
+    
+    # up to 10 "polyhexes" consisting of 7 colors - one color per hex
+    polyhexes: PolyhexCollection = find_items_by_tags(tags)
+
+    for polyhex in polyhexes:
+      for ndx, color in enumerate(polyhex.hexes):
+
+        # get the interpolated set 
+
+        # set the hex
+        logger.debug(f"fill hex: {ndx} color: {color}")
+        # wait a bit...
+
+  @staticmethod
+  def interpolate_color(start_color, end_color, steps):
+    """
+    Interpolate between two RGBW colors
+    """
+    start_color = start_color.astype(np.float32)
+    end_color = end_color.astype(np.float32)
+
+    #create an array of interpolated colors
+    interpolated_colors = [start_color + (i / steps) * (end_color - start_color) for i in range(steps)]
+
+    #round the values to integers
+    interpolated_colors = [np.round(color).astype(np.int8) for color in interpolated_colors]
+
+    return interpolated_colors
 
   @staticmethod
   def _wheel(pos):
