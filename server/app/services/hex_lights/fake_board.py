@@ -19,6 +19,10 @@ class Board:
       logger.debug(f"Fill hex {ndx + (48 * index)} {led}")
 
   @classmethod
+  def fill_hex_segment(cls, hex_ndx: int, segment_ndx: int, color: Color) -> None:
+    logger.debug(f"Fill hex segment {hex_ndx} {segment_ndx}")
+
+  @classmethod
   def rainbow_hex_step(cls)-> None:
     for hex_index in cls.hexagon_indices:
       pixel_index = (hex_index * 256 // len(cls.hexagon_indices)) + cls.rainbow_step_num
