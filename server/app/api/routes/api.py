@@ -55,3 +55,9 @@ def set_all_hex_color(color: Color = Body(...), hex: Hex = Depends(get_hex)) -> 
 def set_hex_color(hex_id: int, color: Color = Body(...), hex: Hex = Depends(get_hex)) -> None:
   hex.set_hex(hex_id, color)
 
+@router.put(
+  "/color/{hex_id}/{segment_id}",
+  summary="Set color to the target segment in the hexagon",
+)
+def set_hex_segment_color(hex_id: int, segment_id: int, color: Color = Body(...), hex: Hex = Depends(get_hex)) -> None:
+  hex.set_hex_segment_color(hex_id, segment_id, color)
