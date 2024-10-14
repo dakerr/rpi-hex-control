@@ -48,6 +48,9 @@ class Hex:
   def set_fill(self, color: Color):
     self._board.fill(color)
 
+  def set_hex_segment(self, index: int, seg_index: int, color: Color):
+    self._board.fill_hex_segment(index, seg_index, color)
+
   def run(self, settings: Settings = get_settings()) -> None:
     while self.state.state == StateEnum.running:
       if self.mode.mode == ModeEnum.rainbow:
