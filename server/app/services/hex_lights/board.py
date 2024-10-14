@@ -18,11 +18,11 @@ class Board:
   hexagon_indices = [0,1,2,3,4,5,6]
 
   @classmethod
-  def fill_hex_segment(cls, hex_ndx, seg_ndx, color: Color) -> None:
+  def fill_hex_segment(cls, hex_ndx: int, seg_ndx: int, color: Color) -> None:
     color_tile = np.array([color.r, color.g, color.b, color.w], dtype=np.int8)
     hex_leds = np.tile(color_tile, (8,1))
-    for ndx in enumerate(hex_leds):
-      pixel_ndx = (48 * hex_ndx) + seg_ndx
+    for ndx,led in enumerate(hex_leds):
+      pixel_ndx = (48 * hex_ndx) + (seg_ndx * 8)
       cls.pixels[ndx + pixel_ndx] = [color.r, color.g, color.b, color.w]
     cls.pixels.show()
 
